@@ -5,6 +5,7 @@
 using namespace std;
 
 const int N = 20, M = 20;
+//棋盘
 char maps[N][M+1] = {
 "--------------------",
 "--------------------",
@@ -27,7 +28,7 @@ char maps[N][M+1] = {
 "--------------------",
 "--------------------"
 };
-bool judge()
+bool judge()//判断函数
 {
     for(int i=2;i<N-2;i++)
         for(int j=2;j<M-2;j++)
@@ -49,7 +50,7 @@ bool judge()
     return false;
 }
 char cmd, op = '-', tgt = '_';
-void mov(char cmd, int &x, int &y)
+void mov(char cmd, int &x, int &y)//移动函数
 {
     int ret = 0;
     char now;
@@ -68,11 +69,11 @@ void mov(char cmd, int &x, int &y)
     if(maps[x][y]!=op) ret = 1, now = maps[x][y];
     maps[x][y] = tgt;
     for(int i=0;i<N;i++) puts(maps[i]);
-    if(ret) maps[x][y] = now;
+    if(ret) maps[x][y] = now;//下棋之后恢复原来的棋子
 
 }
 
-void down(char chr, int x, int y)
+void down(char chr, int x, int y)//下棋
 {
     maps[x][y] = chr;
     for(int i=0;i<N;i++) puts(maps[i]);
@@ -83,7 +84,7 @@ int main()
 
     int x = 0, y = 0;
     int ret = 1;
-    maps[x][y] = tgt;
+    maps[x][y] = tgt;//初位置
     for(int i=0;i<N;i++) puts(maps[i]);
     while(true)
     {
@@ -91,7 +92,7 @@ int main()
         cmd = getch();
         system("cls");
 
-        if(cmd==' '&&maps[x][y]=='_')
+        if(cmd==' '&&maps[x][y]=='_')//移动或者下棋
         {
             char op1;
             if(ret==1)ret=0, op1 = '@' ;
