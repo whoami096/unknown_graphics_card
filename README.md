@@ -1,3 +1,1 @@
-# hello-world-
-My first repository
-hello github
+恭喜你发现了一个没用的github的repository
