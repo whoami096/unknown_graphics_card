@@ -17,7 +17,7 @@ private:
     }
 public:
     T * a = new T[32];
-    T operator[](int k)
+    T & operator[](int k)
     {return *(a+k);}
     int cnt = 0;
     int size() {return cnt;}
@@ -40,6 +40,16 @@ public:
     T *begin(){return a;}
     T *end(){return a+cnt;}
     void erase(T *tmp1, T *tmp2) { cnt = tmp1 - a; }
+    
+    void operator=(myvector<T> tmp)
+    {
+        this->size() = tmp.size();
+        for (int i = 0; i < tmp.size(); i++)
+        {
+            *(a+i) = tmp[i];
+        }
+        
+    }
 };
 
 int main()
