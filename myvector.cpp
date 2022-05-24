@@ -39,7 +39,18 @@ public:
     void clear() { cnt = 0;}
     T *begin(){return a;}
     T *end(){return a+cnt;}
-    void erase(T *tmp1, T *tmp2) { cnt = tmp1 - a; }
+    void erase(T *tmp1, T *tmp2)
+    {
+        myvector<T> tmp;
+        int j = 0;
+        for (int i = 0; i < tmp1-a; i++, j++) tmp[j] = *(a+i);
+        for (int i = 0; tmp2+i!=this->end(); i++, j++) tmp[j] = *(tmp2 + i);
+
+        cnt -= tmp2 - tmp1;
+        
+        delete [] a;
+        a = tmp.a;
+    }
     
     void operator=(myvector<T> tmp)
     {
