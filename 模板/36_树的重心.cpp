@@ -12,6 +12,7 @@ void add(int a, int b)
 {
     e[idx] = b, ne[idx] = h[a], h[a] = idx ++;
 }
+//以u为根的子树中点的数量
 int dfs(int u)
 {
     st[u] = true;
@@ -23,11 +24,11 @@ int dfs(int u)
         if(!st[j])
         {
             int s = dfs(j);
-            res = max(res, s);
-            sum += s;
+            res = max(res, s);//取最大子树
+            sum += s;//加上所有子树
         }
     }
-    res = max(res, n-sum);
+    res = max(res, n-sum);//节点上面的树
     ans = min(ans, res);
     return sum;
     
@@ -44,7 +45,7 @@ int main()
     {
         int a, b; 
         cin >> a >> b;
-        add(a, b), add(b, a);
+        add(a, b), add(b, a);//双向都可以搜
     }
     dfs(1);
     cout << ans << endl;
