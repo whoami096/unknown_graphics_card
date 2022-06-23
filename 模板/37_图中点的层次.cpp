@@ -20,7 +20,7 @@ void bfs()
     while (hh<=tt)
     {
         int  t = q[hh++];
-        for (int i = 0; i != -1; i = ne[i])
+        for (int i = h[t]; i != -1; i = ne[i])
         {
             int j = e[j];
             if (d[[j] == -1])
